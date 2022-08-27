@@ -1,0 +1,81 @@
+<!doctype html5>
+<html>
+<head>
+<title>calculate ticker</title>
+<style>
+    body {
+        background: #000;
+    }
+    #box {
+        background: #333;
+        width: 300px;
+        margin: auto;
+        border-radius: 5px;
+        padding: 0px 5px 5px 5px;
+        
+    }
+    h1 {
+        color: #999;
+        text-shadow: 1px -1px black;
+        text-align: center;
+    }
+    input {
+        width:200px;
+        margin: auto;
+        display: block;
+    }
+    .x {
+        width: 200px;
+        margin: auto;
+        display: block;
+        font-size: 24px;
+        color: #aaa;
+        text-align: center;
+    }
+    .c {
+        font-size: 12px
+    }
+    
+</style>
+</head>
+<body>
+<div id="box">
+    <h1>calculate ticker</h1>
+    <div class="x c">стоимость портфеля</div>
+    <div id="rangePortValue" class="x">200000</div>
+    <input type="range" id="rangePort" min="100000" max="500000" step="50000" value="200000"> 
+    <div class="x c">количество дней</div>
+    <div id="rangeDayValue" class="x">5</div>
+    <input type="range" id="rangeDay" min="5" max="120" step="5" value="5"> 
+    <div class="x c">среднесуточный процент</div>
+    <div id="rangePercValue" class="x">1.005</div>
+    <input type="range" id="rangePerc" min="1.005" max="1.2" step="0.005" value="1.01"> 
+    <div id="portValue" class="x">0</div>
+
+</div>    
+</body>
+    <script>
+let rangePort = document.getElementById('rangePort');
+rangePort.oninput = function(){
+document.getElementById('rangePortValue').innerHTML = rangePort.value;
+rang();
+}
+let rangeDay = document.getElementById('rangeDay');
+rangeDay.oninput = function(){
+document.getElementById('rangeDayValue').innerHTML = rangeDay.value;
+rang();
+}
+let rangePerc = document.getElementById('rangePerc');
+rangePerc.oninput = function(){
+document.getElementById('rangePercValue').innerHTML = rangePerc.value;
+rang();
+}
+function rang(){
+sum = rangePort.value;
+for(i = 0;i<=rangeDay.value;i++){
+    sum*=rangePerc.value;
+}
+document.getElementById('portValue').innerHTML = sum;
+}
+</script>
+</html>
