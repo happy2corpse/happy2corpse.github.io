@@ -75,6 +75,9 @@ sum = rangePort.value;
 for(i = 0;i<=rangeDay.value;i++){
     sum*=rangePerc.value;
 }
+sum -= rangePort.value;
+sum *= 0.87;
+sum += rangePort.value;
 document.getElementById('portValue').innerHTML = sum;
 }
         rang();
